@@ -1,0 +1,58 @@
+﻿<!DOCTYPE html>
+<html>
+  <head>
+  <title>Closed path example</title>
+<style type="text/css">
+*{padding: 0;
+margin: 0;
+top:0;
+left: 0;}
+#renderer {
+   top: 0;
+   left: 0;
+   width:100%; 
+   height:650px;
+   display: block;
+   border:1px solid black; 
+   overflow:hidden;
+}
+#flowchart{left:0;top:0;-moz-user-select:none;position:relative;}
+#info{z-index: 10;border: 2px solid #eee;position:absolute;}
+</style>
+<script src="html5.js"></script>
+</head>
+<body>
+<div id="renderer">
+<canvas id="flowchart" width="1000" height="1000" onclick="show_coords(event)">
+你的浏览器不支持画布功能,请使用IE9+版本浏览器
+</canvas>
+</div>
+<button type="button" onclick="zoomin()">放大</button>
+<button type="button" onclick="zoomout()">缩小</button>
+<div id="form1">
+  <form>
+   <textarea id="jsonString" rows="10" cols="70"></textarea>
+  <input type="button" value="提交" onclick="main()"/>
+  </form>
+</div>
+<script src="treePre.js"></script>
+<script src="drag.js"></script>
+<script type = "text/javascript">
+   function zoomin() {
+         unitWidth = unitWidth + 5;
+         main();
+    }
+   function zoomout() {
+      if(unitWidth>5){
+         unitWidth = unitWidth - 5;
+         main();
+       }
+    }
+
+    var oDagger = document.getElementById("flowchart");
+    startDrag(oDagger, oDagger);
+
+</script>
+</body>
+</html>
+
